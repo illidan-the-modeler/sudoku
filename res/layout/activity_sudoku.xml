@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginBottom="25dip"
+    android:layout_marginTop="10dip"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dip"
+        android:text="@string/title_activity_sudoku"
+        android:textSize="24.5sp" />
+
+    <Button
+        android:id="@+id/button_continue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/continue_lable"
+        android:textSize="24.5sp" />
+
+    <Button
+        android:id="@+id/button_new"
+        android:onClick="onClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/new_game_label"
+        android:textSize="24.5sp" />
+
+    <Button
+        android:id="@+id/button_about"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="@string/about_label"
+        android:textSize="24.5sp" />
+
+    <Button
+        android:id="@+id/button_exit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exit_label"
+        android:textSize="24.5sp" />
+    
+</LinearLayout>
