@@ -16,9 +16,11 @@ public class GameActivity extends Activity {
 	
 	private int puzzle[] =  new int[9*9];
 	private final int used[][][] = new int [9][9][];
+	public static final String  KEY_DIFFICULTY = "org.txsys.sudoku.difficulty";
 	public static final int DIFFICULTY_HARD=2;
 	public static final int DIFFICULTY_MEDIUM=1;
 	public static final int DIFFICULTY_EASY=0;
+	
 	private final String easyPuzzle=
 					"360000000004230800000004200"+
 					"070460003820000014500013020"+
@@ -41,9 +43,13 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         
-        String msg = "onCreate";
-        Log.d(TAG, msg);
+        String funcName = "onCreate";
+        Log.d(TAG, funcName);
         puzzleView = new PuzzleView(this);
+        
+        int diff = this.getIntent().getIntExtra(KEY_DIFFICULTY, DIFFICULTY_EASY);
+        puzzle = this.getPuzzle(diff);
+        this.calculatedUsedTiles();
         
         setContentView(puzzleView);
     }
@@ -144,6 +150,14 @@ public class GameActivity extends Activity {
     		break;
     	}
     	return this.fromPuzzleString(puz);
+    }
+    
+    private void calculatedUsedTiles() {
+        for (int x=0;x<9;x++) {
+            for (int y=0;y<9;y++) {
+                used[x][y] = calculateUsedTiles(x,y);
+            }
+        }
     }
     
     private int[] calculateUsedTiles(int x, int y) {
