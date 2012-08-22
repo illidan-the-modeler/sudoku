@@ -84,7 +84,7 @@ public class GameActivity extends Activity {
     }
     
     protected boolean setTileIfValid(int x, int y, int value) {
-    	//TODO: tiles return 'null'
+    	
     	int tiles[] = getUsedTiles(x,y);
     	if (value!=0) {
     		for (int tile:tiles) {
