@@ -8,6 +8,7 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class PuzzleView extends View {
@@ -112,6 +113,17 @@ public class PuzzleView extends View {
 		canvas.drawRect(selRect, selected);
 		
 	} //protected void onDraw(Canvas canvas)
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+	    String FuncName = "onTouchEvent";
+	    if (event.getAction()!=MotionEvent.ACTION_DOWN) 
+	        return super.onTouchEvent(event);
+	    select((int)(event.getX()/this.width), (int)(event.getY()/this.height));
+	    String msg = FuncName+": x "+this.selX+", y "+this.selY;
+	    Log.d(TAG, msg);
+	    return true;
+	}
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -20,6 +20,8 @@ public class GameActivity extends Activity {
 	public static final int DIFFICULTY_HARD=2;
 	public static final int DIFFICULTY_MEDIUM=1;
 	public static final int DIFFICULTY_EASY=0;
+	public static final int DIFFICULTY_CONTINUE = -1;
+	private static final String PREF_PUZZLE="puzzle"; 
 	
 	private final String easyPuzzle=
 					"360000000004230800000004200"+
@@ -69,6 +71,16 @@ public class GameActivity extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        
+        String FuncName="onPause";
+        String msg = FuncName;
+        Log.d(TAG, msg);
+        this.getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE, this.toPuzzleString(puzzle)).commit();
     }
     
     private int getTile(int x, int y) {
@@ -138,6 +150,9 @@ public class GameActivity extends Activity {
     private int[] getPuzzle(int diff) {
     	String puz;
     	switch(diff) {
+    	case DIFFICULTY_CONTINUE:
+    	    puz = this.getPreferences(MODE_PRIVATE).getString(PREF_PUZZLE, easyPuzzle);
+    	    break;
     	case DIFFICULTY_HARD:
     		puz=hardPuzzle;
     		break;
