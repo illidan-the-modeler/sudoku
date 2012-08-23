@@ -41,6 +41,28 @@ public class Keypad extends Dialog {
     }
     
     private void setListeners() {
-        
+        for (int i=0;i<keys.length;i++) {
+        	final int t = i + 1;
+        	keys[i].setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					returnResult(t);
+				}
+			});
+        }
+    }
+    
+    private boolean isValid(int tile) {
+    	for (int t:useds) {
+    		if (tile==t) return false;
+    	}
+    	return true;
+    }
+    
+    private void returnResult(int tile) {
+    	puzzleView.setSelectedTile(tile);
+    	this.dismiss();
     }
 }
