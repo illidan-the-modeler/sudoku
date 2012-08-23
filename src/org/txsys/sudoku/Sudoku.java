@@ -61,6 +61,9 @@ public class Sudoku extends Activity {
     	case R.id.button_exit:
     		this.finish();
     		break;
+    	case R.id.button_continue:
+    	    startGame(GameActivity.DIFFICULTY_CONTINUE);
+    	    break;
     	}
     }
     
