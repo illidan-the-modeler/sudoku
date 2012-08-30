@@ -28,7 +28,7 @@ public class PuzzleView extends View {
 		super(context);
 		gameActivity = (GameActivity) context;
 		this.setFocusable(true);
-		
+		this.setFocusableInTouchMode(true);
 	}
 	
 	private void getRect(int x, int y, Rect rect) {
@@ -64,7 +64,7 @@ public class PuzzleView extends View {
 		background.setColor(color);
 		canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
 		
-		//
+		//Draw the board...
 		Paint dark = new Paint();
 		dark.setColor(res.getColor(R.color.puzzle_dark));
 		
@@ -91,6 +91,7 @@ public class PuzzleView extends View {
 			canvas.drawLine(i*width+1, 0, i*width+1, getHeight(), hilite);
 		}
 		
+		//Draw the numbers ...
 		Paint foreground = new Paint();
 		foreground.setColor(res.getColor(R.color.puzzle_foreground));
 		
@@ -106,11 +107,14 @@ public class PuzzleView extends View {
 			}
 		}
 		
+		//Draw the selection...
 		String msg = FuncName + ":" + "selRect=" + selRect;
 		Log.d(TAG, msg);
 		Paint selected = new Paint();
 		selected.setColor(res.getColor(R.color.puzzle_selected));
 		canvas.drawRect(selRect, selected);
+		
+		//TODO: Draw the hints
 		
 	} //protected void onDraw(Canvas canvas)
 	
@@ -120,6 +124,7 @@ public class PuzzleView extends View {
 	    if (event.getAction()!=MotionEvent.ACTION_DOWN) 
 	        return super.onTouchEvent(event);
 	    select((int)(event.getX()/this.width), (int)(event.getY()/this.height));
+	    this.gameActivity.showKeypadOrError(selX, selY);
 	    String msg = FuncName+": x "+this.selX+", y "+this.selY;
 	    Log.d(TAG, msg);
 	    return true;
@@ -148,6 +153,11 @@ public class PuzzleView extends View {
 		case KeyEvent.KEYCODE_2:
 		case KeyEvent.KEYCODE_3:
 		case KeyEvent.KEYCODE_4:
+		case KeyEvent.KEYCODE_5:
+		case KeyEvent.KEYCODE_6:
+		case KeyEvent.KEYCODE_7:
+		case KeyEvent.KEYCODE_8:
+		case KeyEvent.KEYCODE_9:
 			this.setSelectedTile(keyCode);
 			break;
 		case KeyEvent.KEYCODE_ENTER:

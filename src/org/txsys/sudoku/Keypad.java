@@ -3,6 +3,7 @@ package org.txsys.sudoku;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 public class Keypad extends Dialog {
@@ -33,6 +34,27 @@ public class Keypad extends Dialog {
             }
         }
         this.setListeners();
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	int tile = 0;
+    	switch(keyCode) {
+    	case KeyEvent.KEYCODE_0:
+    	case KeyEvent.KEYCODE_SPACE:
+    		tile = 0;
+    		break;
+    		
+    	case KeyEvent.KEYCODE_1:
+    		tile = 1;
+    		break;
+    	default:
+    		return super.onKeyDown(keyCode, event)	;
+    	}
+    	if (isValid(tile)) {
+    		returnResult(tile);
+    	}
+    	return true;
     }
     
     private void findViews() {

@@ -1,9 +1,11 @@
 package org.txsys.sudoku;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -54,6 +56,7 @@ public class GameActivity extends Activity {
         this.calculatedUsedTiles();
         
         setContentView(puzzleView);
+        puzzleView.requestFocus();
     }
 
     @Override
@@ -121,8 +124,11 @@ public class GameActivity extends Activity {
     	int tiles[] = this.getUsedTiles(x, y);
     	if (tiles.length==9) {
     		Toast toast = Toast.makeText(this, R.string.no_moves_label, Toast.LENGTH_SHORT);
+    		toast.setGravity(Gravity.CENTER, 0, 0);
     		toast.show();
     	} else {
+    		Dialog dialog = new Keypad(this, tiles, puzzleView);
+    		dialog.show();
     		String msg = "showKeypad: used=" + toPuzzleString(tiles);
     		Log.d(TAG, msg);
     	}
