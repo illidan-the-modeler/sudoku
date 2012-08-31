@@ -59,7 +59,12 @@ public class Keypad extends Dialog {
     
     private void findViews() {
         keypad = findViewById(R.id.keypad);
-        keys[0] = findViewById(R.id.keypad_1);
+        //keys[0] = findViewById(R.id.keypad_1);
+        int id = R.id.keypad_1;
+        for (int i=0;i<9;i++) {
+            keys[i] = findViewById(id);
+        }
+        
     }
     
     private void setListeners() {
