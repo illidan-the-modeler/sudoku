@@ -39,6 +39,7 @@ public class Keypad extends Dialog {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
     	int tile = 0;
+ 
     	switch(keyCode) {
     	case KeyEvent.KEYCODE_0:
     	case KeyEvent.KEYCODE_SPACE:
@@ -46,7 +47,15 @@ public class Keypad extends Dialog {
     		break;
     		
     	case KeyEvent.KEYCODE_1:
-    		tile = 1;
+    	case KeyEvent.KEYCODE_2:
+    	case KeyEvent.KEYCODE_3:
+    	case KeyEvent.KEYCODE_4:
+    	case KeyEvent.KEYCODE_5:
+    	case KeyEvent.KEYCODE_6:
+    	case KeyEvent.KEYCODE_7:
+    	case KeyEvent.KEYCODE_8:
+    	case KeyEvent.KEYCODE_9:
+    		tile = keyCode-KeyEvent.KEYCODE_0;
     		break;
     	default:
     		return super.onKeyDown(keyCode, event)	;
@@ -62,7 +71,7 @@ public class Keypad extends Dialog {
         //keys[0] = findViewById(R.id.keypad_1);
         int id = R.id.keypad_1;
         for (int i=0;i<9;i++) {
-            keys[i] = findViewById(id);
+            keys[i] = findViewById(id+i);
         }
         
     }
