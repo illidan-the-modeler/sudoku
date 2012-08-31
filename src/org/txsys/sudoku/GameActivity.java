@@ -54,6 +54,8 @@ public class GameActivity extends Activity {
         this.calculatedUsedTiles();
         
         setContentView(puzzleView);
+        
+        this.getIntent().putExtra(GameActivity.KEY_DIFFICULTY, GameActivity.DIFFICULTY_CONTINUE);
     }
 
     @Override
