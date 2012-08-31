@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -13,7 +15,10 @@ import android.view.View;
 
 public class PuzzleView extends View {
 	
-	private final static String TAG="org.txsys.sudoku.PuzzleView";
+	private static final  String TAG="org.txsys.sudoku.PuzzleView";
+	
+	private static final String SELX = "SELX";
+	private static final String SELY = "SELY";
 	
 	private GameActivity gameActivity;
 	
@@ -117,6 +122,21 @@ public class PuzzleView extends View {
 		//TODO: Draw the hints
 		
 	} //protected void onDraw(Canvas canvas)
+	
+	@Override
+	protected Parcelable onSaveInstanceState() {
+	    String FuncName = "onSaveInstanceState";
+	    String msg = FuncName;
+	    Log.d(TAG, msg);
+	    
+	    Parcelable p = super.onSaveInstanceState();
+	    Bundle b = new Bundle();
+	    b.putInt(SELX, this.selX);
+	    b.putInt(SELY, this.selY);
+	    //TODO: Add b.putParcelable
+	    
+	    return b;
+	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

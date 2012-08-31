@@ -57,6 +57,7 @@ public class GameActivity extends Activity {
         
         setContentView(puzzleView);
         puzzleView.requestFocus();
+        this.getIntent().putExtra(GameActivity.KEY_DIFFICULTY, GameActivity.DIFFICULTY_CONTINUE);
     }
 
     @Override
