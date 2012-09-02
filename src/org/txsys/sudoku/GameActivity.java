@@ -84,7 +84,7 @@ public class GameActivity extends Activity {
         String FuncName="onPause";
         String msg = FuncName;
         Log.d(TAG, msg);
-        this.getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE, this.toPuzzleString(puzzle)).commit();
+        this.getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE, toPuzzleString(puzzle)).commit();
     }
     
     private int getTile(int x, int y) {
@@ -171,7 +171,7 @@ public class GameActivity extends Activity {
     		puz=hardPuzzle;
     		break;
     	}
-    	return this.fromPuzzleString(puz);
+    	return fromPuzzleString(puz);
     }
     
     private void calculatedUsedTiles() {

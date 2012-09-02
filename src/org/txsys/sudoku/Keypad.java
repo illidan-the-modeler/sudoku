@@ -72,9 +72,8 @@ public class Keypad extends Dialog {
         	final int t = i + 1;
         	keys[i].setOnClickListener(new View.OnClickListener() {
 				
-				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					
 					returnResult(t);
 				}
 			});
