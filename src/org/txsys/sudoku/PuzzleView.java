@@ -22,8 +22,8 @@ public class PuzzleView extends View {
 	
 	private GameActivity gameActivity;
 	
-	private float width;
-	private float height;
+	private float width;  //width of one tile
+	private float height;  //height of one tile
 	private int selX;
 	private int selY;
 	
