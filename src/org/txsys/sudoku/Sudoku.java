@@ -36,9 +36,9 @@ public class Sudoku extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+//            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+//                return true;
             case R.id.settings:
             	this.startActivity(new Intent(this, Settings.class));
             	//Intent intent = new Intent(this, Settings.class);
@@ -59,6 +59,8 @@ public class Sudoku extends Activity {
     		openNewGameDialog();
     		break;
     	case R.id.button_exit:
+    		String msg = "Sudoku: exit.";
+    		Log.d(TAG, msg);
     		this.finish();
     		break;
     	case R.id.button_continue:

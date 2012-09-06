@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -99,6 +100,8 @@ public class PuzzleView extends View {
 		//Draw the numbers ...
 		Paint foreground = new Paint();
 		foreground.setColor(res.getColor(R.color.puzzle_foreground));
+		foreground.setStyle(Style.FILL);
+		foreground.setTextSize(height*0.75F);
 		
 		foreground.setColor(res.getColor(R.color.puzzle_foreground)) ;
 		FontMetrics fm = foreground.getFontMetrics();
